@@ -41,6 +41,7 @@
     "@material-ui/core": "^3.4.0",
     "@material-ui/icons": "^3.0.1",
     "axios": "^0.18.1",
+    "centrifuge": "^2.6.4",
     "cross-env": "5.2.0",
     "emoji-mart": "^2.9.2",
     "js-cookie": "^2.2.0",

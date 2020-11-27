@@ -1,10 +1,7 @@
-import axios from 'axios';
-
 import store from '../../store';
-import route from '../../config/route';
-import httpOptions from '../../helper/http';
 import { insertMockToMessages, updateMockedMessage } from './loader';
 import { messageEditAction } from '../../actions/message';
+import CentrifugeSingleton from '../centrifiuge';
 
 const mockMessage = (text, user) => {
   return {
@@ -28,20 +25,22 @@ const mockMessage = (text, user) => {
 export const sendMessage = () => {
   const state = store.getState();
   const { text } = state.message;
-  const userId = state.room.selected.users[0].id;
-  const url = `${route.URL_MESSAGE_SEND_USER}/${userId}`;
+  // const userId = state.room.selected.users[0].id;
 
   if (text.trim().length === 0) {
     return;
   }
 
   const mock = mockMessage(text, state.user.me);
+  //   const data = {
+  //   from: state.user.me.id,
+  //   to: userId,
+  //   text,
+  // };
 
-  insertMockToMessages(mock);
-
-  axios
-    .post(url, { text }, httpOptions)
+  CentrifugeSingleton.getInstance().publish('news', 1)
     .then(() => {
+      insertMockToMessages(mock);
       updateMockedMessage(mock);
     });
 };

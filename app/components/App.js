@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core';
 import Messages from './Message/Messages';
 import authorizeUser from '../actions/user';
 import Sidenav from './Sidenav';
+import CentrifugeSingleton from '../service/centrifiuge';
 
 const styles = {
   loading: {
@@ -33,6 +34,11 @@ const styles = {
 class App extends React.Component {
   componentDidMount() {
     authorizeUser();
+    CentrifugeSingleton.connect();
+  }
+
+  componentWillUnmount() {
+    CentrifugeSingleton.disconnect();
   }
 
   render() {

@@ -1,6 +1,8 @@
 import params from './params/index';
 
 const host = params.API_HOST;
+const centrifugo = params.CENTRIFUGO_HOST;
+
 const route = {
   URL_INDEX: `${host}`,
   URL_LOGOUT: `${host}/logout`,
@@ -16,6 +18,9 @@ const route = {
   URL_ROOM_MESSAGES: `${host}/api/messenger/room/`,
   URL_MESSAGE_SEND_USER: `${host}/api/messenger/message/user`,
   URL_MESSAGE_READ: `${host}/api/messenger/message`,
+
+  URL_CENTRIFUGO: `${centrifugo}`,
+  URL_CENTRIFUGO_CONNECT: `${centrifugo}/connection/websocket`,
 };
 
 export default route;
