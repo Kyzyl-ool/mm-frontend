@@ -40,8 +40,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { me, classes } = this.props;
-    const isLoading = me.id === undefined;
+    const { me, classes, authorized } = this.props;
+    const isLoading = me.id === undefined && authorized === null;
 
     return (
       <React.Fragment>
@@ -72,14 +72,20 @@ class App extends React.Component {
   }
 }
 
+App.defaultProps = {
+  authorized: null,
+};
+
 App.propTypes = {
   me: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
+  authorized: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
   return {
     me: state.user.me,
+    authorized: state.user.authorized,
   };
 }
 

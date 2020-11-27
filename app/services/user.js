@@ -2,6 +2,8 @@ import axios from 'axios';
 
 import route from '../config/route';
 import httpOptions from '../helper/http';
+import { authorizeFailAction } from '../store/actions/user';
+import store from '../store';
 
 const authorizeUser = () => {
   axios
@@ -14,7 +16,7 @@ const authorizeUser = () => {
     })
     .catch(({ response }) => {
       if (response.status === 401) {
-        console.log('Unauthorized');
+        store.dispatch(authorizeFailAction());
       }
     });
 };
