@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/core';
 import Messages from './Message/Messages';
 import authorizeUser from '../actions/user';
 import Sidenav from './Sidenav';
-import CentrifugeSingleton from '../service/centrifiuge';
+import CentrifugeSingleton from '../service/centrifuge';
 
 const styles = {
   loading: {

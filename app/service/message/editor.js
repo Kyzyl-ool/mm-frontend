@@ -1,7 +1,7 @@
 import store from '../../store';
 import { insertMockToMessages, updateMockedMessage } from './loader';
 import { messageEditAction } from '../../actions/message';
-import CentrifugeSingleton from '../centrifiuge';
+import CentrifugeSingleton from '../centrifuge';
 
 const mockMessage = (text, user) => {
   return {
