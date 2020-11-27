@@ -7,9 +7,8 @@ import MoonLoader from 'react-spinners/BarLoader';
 import { withStyles } from '@material-ui/core';
 
 import Messages from './Message/Messages';
-import authorizeUser from '../actions/user';
 import Sidenav from './Sidenav';
-import CentrifugeSingleton from '../service/centrifuge';
+import CentrifugeSingleton from '../services/centrifuge';
 
 const styles = {
   loading: {
@@ -33,7 +32,6 @@ const styles = {
 
 class App extends React.Component {
   componentDidMount() {
-    authorizeUser();
     CentrifugeSingleton.connect();
   }
 

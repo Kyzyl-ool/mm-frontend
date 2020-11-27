@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import store from '../store';
-import { messageTextFlushAction } from '../actions/message';
+import { messageTextFlushAction } from '../store/actions/message';
 import { loadMessages } from './message/loader';
 import route from '../config/route';
 import httpOptions from '../helper/http';
@@ -9,7 +9,7 @@ import {
   roomCollectionLoadSuccessAction,
   roomSelectAction,
   roomOnlineUpdateAction,
-} from '../actions/room';
+} from '../store/actions/room';
 
 const buildRooms = (collection) => {
   const items = [];

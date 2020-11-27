@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 
 import Rooms from './Room/Rooms';
-import authorizeUser from '../service/user';
+import authorizeUser from '../services/user';
 import Heading from './Room/Heading';
 
 const styles = theme => ({

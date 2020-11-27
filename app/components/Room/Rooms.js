@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import PeopleOutline from '@material-ui/icons/PeopleOutline';
 
 import Room from './Room';
-import { selectRoom, loadRooms } from '../../service/room';
-import { loadMessages } from '../../service/message/loader';
+// import { loadRooms } from '../../service/room';
+// import { loadMessages } from '../../service/message/loader';
 
 const styles = ({
   List: {
@@ -23,12 +23,15 @@ const styles = ({
 
 class Rooms extends React.Component {
   componentDidMount() {
-    loadRooms();
+    // loadRooms();
+    console.log('loadRooms');
   }
 
-  onRoomClick = (event, room) => {
-    selectRoom(room);
-    loadMessages(room.id);
+  // onRoomClick = (event, room) => {
+  onRoomClick = () => {
+    // selectRoom(room);
+    // loadMessages(room.id);
+    console.log('room click');
   };
 
   render() {

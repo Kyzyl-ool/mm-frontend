@@ -6,7 +6,7 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 
 import { calendarStringsMessage } from '../../helper/time';
-import readMessage from '../../service/message/message';
+import readMessage from '../../services/message/message';
 import MessageStatus from './Status';
 
 const styles = ({

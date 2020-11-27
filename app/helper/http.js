@@ -1,10 +1,11 @@
-import Cookies from 'js-cookie';
+// eslint-disable-next-line no-unused-vars
+import { AxiosRequestConfig } from 'axios';
 
+/**
+ * @type {AxiosRequestConfig}
+ */
 const options = {
   withCredentials: true,
-  headers: {
-    'X-XSRF-TOKEN': Cookies.get('XSRF-TOKEN'),
-  },
 };
 
 export default options;

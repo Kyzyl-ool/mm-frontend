@@ -13,7 +13,7 @@ const route = {
   URL_PUSHER_AUTH: `${host}/api/messenger/pusher/authPresence`,
   URL_PUSHER_ONLINE: `${host}/api/messenger/pusher/authOnline`,
 
-  URL_USER_AUTHORIZE: `${host}/api/messenger/me.json`,
+  URL_USER_AUTHORIZE: `${host}/api/auth`,
   URL_ROOM: `${host}/api/messenger/room.json`,
   URL_ROOM_MESSAGES: `${host}/api/messenger/room/`,
   URL_MESSAGE_SEND_USER: `${host}/api/messenger/message/user`,

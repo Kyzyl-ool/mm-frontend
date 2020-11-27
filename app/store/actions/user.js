@@ -1,9 +1,11 @@
+import { USER_AUTHORIZE_SUCCESS, USER_ONLINE_UPDATE } from './types';
+
 const authorizeSuccessAction = user => ({
-  type: 'USER_AUTHORIZE_SUCCESS',
+  type: USER_AUTHORIZE_SUCCESS,
   payload: user,
 });
 export const userOnlineUpdateAction = user => ({
-  type: 'USER_ONLINE_UPDATE',
+  type: USER_ONLINE_UPDATE,
   payload: user,
 });
 

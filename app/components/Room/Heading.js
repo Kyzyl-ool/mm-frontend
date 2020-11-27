@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
-import { roomSearchAction } from '../../actions/room';
+import { roomSearchAction } from '../../store/actions/room';
 import store from '../../store';
 
 const styles = {

@@ -3,7 +3,7 @@ import axios from 'axios';
 import store from '../../store';
 import route from '../../config/route';
 import httpOptions from '../../helper/http';
-import { messageCollectionLoadSuccessAction, messageSendAction } from '../../actions/message';
+import { messageCollectionLoadSuccessAction, messageSendAction } from '../../store/actions/message';
 
 const formatMessages = (messages) => {
   const myUserId = store
