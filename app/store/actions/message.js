@@ -2,7 +2,7 @@ import {
   MESSAGE_COLLECTION_LOAD_SUCCESS,
   MESSAGE_EDIT,
   MESSAGE_SEND,
-  MESSAGE_TEXT_FLUSH
+  MESSAGE_TEXT_FLUSH,
 } from './types';
 
 export const messageSendAction = messages => ({
