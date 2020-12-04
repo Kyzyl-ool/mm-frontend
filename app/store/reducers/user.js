@@ -8,6 +8,7 @@ const initialState = {
 const user = (state = initialState, action) => {
   switch (action.type) {
     case USER_AUTHORIZE_SUCCESS: {
+      localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         me: action.payload,

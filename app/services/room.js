@@ -34,7 +34,7 @@ export const selectRoom = (room) => {
 export const loadRooms = () => {
   axios
     .get(
-      route.URL_ROOM,
+      route.URL_CHAT,
       httpOptions,
     )
     .then((response) => {

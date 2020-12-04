@@ -2,17 +2,22 @@ import axios from 'axios';
 
 import route from '../config/route';
 import httpOptions from '../helper/http';
-import { authorizeFailAction } from '../store/actions/user';
+import authorizeSuccessAction, { authorizeFailAction } from '../store/actions/user';
 import store from '../store';
 
+// TODO: Надо email и password брать из формы авторизации (который тоже надо сделать)
 const authorizeUser = () => {
   axios
-    .get(
+    .post(
       route.URL_USER_AUTHORIZE,
+      {
+        email: 'kyzyloolk@mail.ru',
+        passwordHash: 'MmNmMjRkYmE1ZmIwYTMwZTI2ZTgzYjJhYzViOWUyOWUxYjE2MWU1YzFmYTc0MjVlNzMwNDMzNjI5MzhiOTgyNA==',
+      },
       httpOptions,
     )
-    .then(() => {
-
+    .then(({ data }) => {
+      store.dispatch(authorizeSuccessAction(data));
     })
     .catch(({ response }) => {
       if (response.status === 401) {
