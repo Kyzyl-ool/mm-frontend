@@ -14,7 +14,7 @@ class CentrifugeSingleton {
 
     this.instance = new Centrifuge(route.URL_CENTRIFUGO_CONNECT);
 
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3NzciLCJleHAiOjE2MDcxMDMyNzh9.WRMusnrws9UM1dTeDCtMzkxEobpJYMJbDSyuvF5cbZg';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIn0.GXJt-BM9mvzAQfhKNAgAHLu7y6dVFSl6XWqc-ODCgwc';
     this.instance.setToken(token);
     this.instance.connect();
 

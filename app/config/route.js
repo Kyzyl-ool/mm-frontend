@@ -15,7 +15,7 @@ const route = {
 
   URL_USER_AUTHORIZE: `${host}/api/auth`,
   URL_CHAT: `${host}/api/chat`,
-  URL_ROOM_MESSAGES: `${host}/api/messenger/room/`,
+  URL_ROOM_MESSAGES: `${host}/api/message`,
   URL_MESSAGE_SEND_USER: `${host}/api/messenger/message/user`,
   URL_MESSAGE_READ: `${host}/api/messenger/message`,
 
