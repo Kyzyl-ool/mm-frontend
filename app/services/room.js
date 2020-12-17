@@ -4,7 +4,7 @@ import store from '../store';
 import { messageTextFlushAction } from '../store/actions/message';
 import { loadMessages } from './message/loader';
 import route from '../config/route';
-import httpOptions from '../helper/http';
+import httpOptions from '../helper/httpOptions';
 import {
   roomCollectionLoadSuccessAction,
   roomSelectAction,

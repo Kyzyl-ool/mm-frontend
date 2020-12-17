@@ -1,6 +1,6 @@
 import axios from 'axios';
 import store from '../../store';
-import httpOptions from '../../helper/http';
+import httpOptions from '../../helper/httpOptions';
 import route from '../../config/route';
 
 /**

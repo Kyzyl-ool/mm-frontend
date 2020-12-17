@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import store from '../../store';
 import route from '../../config/route';
-import httpOptions from '../../helper/http';
+import httpOptions from '../../helper/httpOptions';
 import { messageCollectionLoadSuccessAction, messageSendAction } from '../../store/actions/message';
 
 const formatMessages = (messages) => {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import route from '../config/route';
-import httpOptions from '../helper/http';
+import httpOptions from '../helper/httpOptions';
 import authorizeSuccessAction, { authorizeFailAction } from '../store/actions/user';
 import store from '../store';
 
