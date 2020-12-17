@@ -36,7 +36,9 @@ export const sendMessage = () => {
 
   const mock = mockMessage(text, state.user.me);
 
-  CentrifugeSingleton.getInstance().publish('news', 1)
+  const users = state.room.selected.users.map(user => user.id).sort();
+
+  CentrifugeSingleton.getInstance().publish(`messages_${users.join('-')}#${users.join(',')}`, 1)
     .then(() => {
       insertMockToMessages(mock);
       updateMockedMessage(mock);
