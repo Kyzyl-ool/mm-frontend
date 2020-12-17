@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MoonLoader from 'react-spinners/BarLoader';
@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core';
 import Messages from './Message/Messages';
 import Sidenav from './Sidenav';
 import CentrifugeSingleton from '../services/centrifuge';
+import Register from './Register';
 
 const styles = {
   loading: {
@@ -42,13 +43,14 @@ class App extends React.Component {
   render() {
     const { me, classes, authorized } = this.props;
     const isLoading = me.id === undefined && authorized === null;
+    const token = localStorage.getItem('token');
 
     return (
       <React.Fragment>
         <CssBaseline />
         <Router>
           <div id="layout">
-            {isLoading ? (
+            {token && isLoading ? (
               <div id="loading" className={classes.loading}>
                 <div className={classes.spinner}>
                   <MoonLoader
@@ -62,9 +64,11 @@ class App extends React.Component {
               </div>
             ) : ('')}
 
-            <Route component={Sidenav} />
-            <Route component={Messages} />
+            {!token ? <Redirect to="/register" /> : null}
 
+            <Route path="/chats" component={Sidenav} />
+            <Route path="/chats" component={Messages} />
+            <Route path="/register" component={Register} />
           </div>
         </Router>
       </React.Fragment>
