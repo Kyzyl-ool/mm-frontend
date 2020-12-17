@@ -7,22 +7,21 @@ class CentrifugeSingleton {
    */
   static instance = null;
 
-  static getInstance() {
-    if (this.instance) {
-      return this.instance;
+  static getInstance(token) {
+    if (!this.instance) {
+      this.instance = new Centrifuge(route.URL_CENTRIFUGO_CONNECT);
     }
 
-    this.instance = new Centrifuge(route.URL_CENTRIFUGO_CONNECT);
-
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIn0.GXJt-BM9mvzAQfhKNAgAHLu7y6dVFSl6XWqc-ODCgwc';
-    this.instance.setToken(token);
-    this.instance.connect();
+    if (!this.instance.isConnected()) {
+      this.instance.setToken(token);
+      this.instance.connect();
+    }
 
     return this.instance;
   }
 
-  static connect() {
-    this.getInstance();
+  static connect(token) {
+    this.getInstance(token);
   }
 
   static disconnect() {

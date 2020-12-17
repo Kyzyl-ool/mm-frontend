@@ -1,4 +1,7 @@
-import { USER_AUTHORIZE_FAIL, USER_AUTHORIZE_SUCCESS } from '../actions/types';
+import {
+  USER_AUTHORIZE_FAIL,
+  USER_AUTHORIZE_SUCCESS,
+} from '../actions/types';
 
 const initialState = {
   me: {},
@@ -9,6 +12,7 @@ const user = (state = initialState, action) => {
   switch (action.type) {
     case USER_AUTHORIZE_SUCCESS: {
       localStorage.setItem('token', action.payload.token);
+      localStorage.setItem('centrifugoToken', action.payload.centrifugoToken);
       return {
         ...state,
         me: action.payload,

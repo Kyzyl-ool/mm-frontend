@@ -32,7 +32,7 @@ const styles = {
 
 class App extends React.Component {
   componentDidMount() {
-    CentrifugeSingleton.connect();
+    CentrifugeSingleton.connect(localStorage.getItem('centrifugoToken'));
   }
 
   componentWillUnmount() {
