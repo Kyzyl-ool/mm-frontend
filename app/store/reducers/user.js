@@ -13,6 +13,7 @@ const user = (state = initialState, action) => {
     case USER_AUTHORIZE_SUCCESS: {
       localStorage.setItem('token', action.payload.token);
       localStorage.setItem('centrifugoToken', action.payload.centrifugoToken);
+      localStorage.setItem('name', action.payload.email);
       return {
         ...state,
         me: action.payload,

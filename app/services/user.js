@@ -5,13 +5,12 @@ import httpOptions from '../helper/httpOptions';
 import authorizeSuccessAction, { authorizeFailAction } from '../store/actions/user';
 import store from '../store';
 
-// TODO: Надо email и password брать из формы авторизации (который тоже надо сделать)
-const authorizeUser = () => {
+const authorizeUser = (email = localStorage.getItem('name')) => {
   axios
     .post(
       route.URL_USER_AUTHORIZE,
       {
-        email: 'kyzyloolk@mail.ru',
+        email,
         passwordHash: 'MmNmMjRkYmE1ZmIwYTMwZTI2ZTgzYjJhYzViOWUyOWUxYjE2MWU1YzFmYTc0MjVlNzMwNDMzNjI5MzhiOTgyNA==',
       },
       httpOptions,
@@ -23,7 +22,24 @@ const authorizeUser = () => {
       if (response.status === 401) {
         store.dispatch(authorizeFailAction());
       }
+      localStorage.removeItem('token');
+      localStorage.removeItem('centrifugeToken');
+      localStorage.removeItem('name');
     });
+};
+
+export const registerUser = (email) => {
+  return axios
+    .put(
+      route.URL_USER_REGISTER,
+      {
+        email,
+        passwordHash: 'MmNmMjRkYmE1ZmIwYTMwZTI2ZTgzYjJhYzViOWUyOWUxYjE2MWU1YzFmYTc0MjVlNzMwNDMzNjI5MzhiOTgyNA==',
+        middleName: '-',
+        lastName: '-',
+        firstName: email,
+      },
+    );
 };
 
 export default authorizeUser;

@@ -42,15 +42,15 @@ class App extends React.Component {
 
   render() {
     const { me, classes, authorized } = this.props;
-    const isLoading = me.id === undefined && authorized === null;
     const token = localStorage.getItem('token');
+    const isLoading = (me.id === undefined && authorized === null) && token;
 
     return (
       <React.Fragment>
         <CssBaseline />
         <Router>
           <div id="layout">
-            {token && isLoading ? (
+            {isLoading ? (
               <div id="loading" className={classes.loading}>
                 <div className={classes.spinner}>
                   <MoonLoader
@@ -64,7 +64,7 @@ class App extends React.Component {
               </div>
             ) : ('')}
 
-            {!token ? <Redirect to="/register" /> : null}
+            {!token ? <Redirect to="/register" /> : <Redirect to="/chats" />}
 
             <Route path="/chats" component={Sidenav} />
             <Route path="/chats" component={Messages} />

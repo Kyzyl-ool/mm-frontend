@@ -14,6 +14,7 @@ const route = {
   URL_PUSHER_ONLINE: `${host}/api/messenger/pusher/authOnline`,
 
   URL_USER_AUTHORIZE: `${host}/api/auth`,
+  URL_USER_REGISTER: `${host}/api/register`,
   URL_CHAT: `${host}/api/chat`,
   URL_ROOM_MESSAGES: `${host}/api/message`,
   URL_MESSAGE_SEND_USER: `${host}/api/messenger/message/user`,
