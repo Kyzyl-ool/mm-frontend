@@ -57,8 +57,10 @@ function Register() {
         <a href="mailto:kyzyl.okm@phystech.edu">kyzyl.okm@phystech.edu</a>
       </Typography>
       <br />
-      <Typography>
-        Also you are welcome to see the source code in my GitHub:
+      <div>
+        <Typography>
+          Also you are welcome to see the source code in my GitHub:
+        </Typography>
         <ul>
           <li>
             <a href="https://github.com/Kyzyl-ool/mm-frontend/">Front-end</a>
@@ -67,7 +69,7 @@ function Register() {
             <a href="https://github.com/Kyzyl-ool/mm-server/">Back-end</a>
           </li>
         </ul>
-      </Typography>
+      </div>
       <Typography>
         Currently online users: <b>{currentlyOnline}</b>
       </Typography>
