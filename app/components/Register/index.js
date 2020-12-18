@@ -54,13 +54,13 @@ function Register() {
       <Typography>
         Pay attention to the fact that this application is in MVP stage so you may find errors and
         report them to me:&nbsp;
-        <a href="mailto:kyzyl.okm@phystech.edu">kyzyl.okm@phystech.edu</a>
+        <a href="mailto:kyzyl.okm@phystech.edu">kyzyl.okm@phystech.edu</a>&nbsp;
         or to Maxim: <a href="mailto:jim_hockins@mail.ru">jim_hockins@mail.ru</a>
       </Typography>
       <br />
       <div>
         <Typography>
-          Also you are welcome to see the source code in my GitHub:
+          Also you are welcome to see the source code in GitHub:
         </Typography>
         <ul>
           <li>
