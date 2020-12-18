@@ -55,6 +55,7 @@ function Register() {
         Pay attention to the fact that this application is in MVP stage so you may find errors and
         report them to me:&nbsp;
         <a href="mailto:kyzyl.okm@phystech.edu">kyzyl.okm@phystech.edu</a>
+        or to Maxim: <a href="mailto:jim_hockins@mail.ru">jim_hockins@mail.ru</a>
       </Typography>
       <br />
       <div>
