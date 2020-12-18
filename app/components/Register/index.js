@@ -58,6 +58,17 @@ function Register() {
       </Typography>
       <br />
       <Typography>
+        Also you are welcome to see the source code in my GitHub:
+        <ul>
+          <li>
+            <a href="https://github.com/Kyzyl-ool/mm-frontend/">Front-end</a>
+          </li>
+          <li>
+            <a href="https://github.com/Kyzyl-ool/mm-server/">Back-end</a>
+          </li>
+        </ul>
+      </Typography>
+      <Typography>
         Currently online users: <b>{currentlyOnline}</b>
       </Typography>
       <FormGroup>
