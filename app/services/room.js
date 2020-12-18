@@ -99,3 +99,16 @@ export const updateOnlineStatusesMemberRemoved = (member) => {
 
   store.dispatch(roomOnlineUpdateAction(updated));
 };
+
+export const getChats = async () => {
+  return axios.get(route.URL_CHAT, httpOptions);
+};
+
+export const createChat = async (name) => {
+  return axios.put(route.URL_CHAT, {
+    title: `Chat with ${localStorage.getItem('name')} and ${name}`,
+    participants: [],
+  }, httpOptions);
+};
+
+// export const joinChat = (chat)

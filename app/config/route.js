@@ -13,10 +13,14 @@ const route = {
   URL_PUSHER_AUTH: `${host}/api/messenger/pusher/authPresence`,
   URL_PUSHER_ONLINE: `${host}/api/messenger/pusher/authOnline`,
 
+  URL_USERS: `${host}/api/users`,
+  URL_ONLINE_USERS: `${host}/api/online`,
   URL_USER_AUTHORIZE: `${host}/api/auth`,
   URL_USER_REGISTER: `${host}/api/register`,
+
   URL_CHAT: `${host}/api/chat`,
   URL_ROOM_MESSAGES: `${host}/api/message`,
+
   URL_MESSAGE_SEND_USER: `${host}/api/messenger/message/user`,
   URL_MESSAGE_READ: `${host}/api/messenger/message`,
 

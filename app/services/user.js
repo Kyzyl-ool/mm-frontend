@@ -42,4 +42,8 @@ export const registerUser = (email) => {
     );
 };
 
+export const getUsers = async () => {
+  return axios.get(route.URL_USERS, httpOptions);
+};
+
 export default authorizeUser;

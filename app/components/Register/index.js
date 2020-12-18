@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button, FormGroup, Input, Typography,
 } from '@material-ui/core';
+import axios from 'axios';
 import authorizeUser, { registerUser } from '../../services/user';
+import httpOptions from '../../helper/httpOptions';
+import route from '../../config/route';
 
 function Register() {
   const [value, setValue] = useState('');
+  const [currentlyOnline, setCurrentlyOnline] = useState(0);
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -19,6 +23,13 @@ function Register() {
       throw Error('Registration has failed');
     }
   };
+
+  useEffect(() => {
+    axios.get(route.URL_ONLINE_USERS, httpOptions)
+      .then(({ data }) => {
+        setCurrentlyOnline(data);
+      });
+  }, []);
 
   return (
     <section className="register-container">
@@ -35,7 +46,7 @@ function Register() {
       </Typography>
       <br />
       <Typography>
-        Currently online users: <b>5</b>
+        Currently online users: <b>{currentlyOnline}</b>
       </Typography>
       <FormGroup>
         <Input

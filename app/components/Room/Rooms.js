@@ -5,9 +5,15 @@ import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import { connect } from 'react-redux';
 import PeopleOutline from '@material-ui/icons/PeopleOutline';
+import {
+  Button, Dialog, FormGroup, Input,
+} from '@material-ui/core';
+import store from '../../store';
 
 import Room from './Room';
-import { loadRooms } from '../../services/room';
+import { createChat, getChats, loadRooms } from '../../services/room';
+import { getUsers } from '../../services/user';
+import { authorizeFailAction } from '../../store/actions/user';
 // import { loadMessages } from '../../service/message/loader';
 
 const styles = ({
@@ -22,6 +28,11 @@ const styles = ({
 });
 
 class Rooms extends React.Component {
+  state = {
+    addChatPopupOpened: false,
+    inputValue: '',
+  };
+
   componentDidMount() {
     loadRooms();
   }
@@ -33,6 +44,73 @@ class Rooms extends React.Component {
     console.log('room click');
   };
 
+  onOpenPopup = () => {
+    this.setState({
+      addChatPopupOpened: true,
+    });
+  };
+
+  onAddNewChatClick = async () => {
+    const { data: chats } = await getChats();
+    if (chats && chats.length > 0) {
+      console.log(chats);
+    } else {
+      try {
+        const { data } = await getUsers();
+        const otherUser = data.find(({ email }) => email === this.state.inputValue);
+        await createChat(this.state.inputValue, [otherUser.id]);
+        this.onClosePopup();
+        loadRooms();
+      } catch (e) {
+        throw Error('Adding new chat failed');
+      }
+    }
+  };
+
+  onInputChange = (event) => {
+    this.setState({
+      inputValue: event.target.value,
+    });
+  };
+
+  onClosePopup = () => {
+    this.setState({ addChatPopupOpened: false });
+  };
+
+  onExitClick = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('centrifugeToken');
+    localStorage.removeItem('name');
+
+    store.dispatch(authorizeFailAction());
+  };
+
+  renderDialog() {
+    return (
+      <Dialog open={this.state.addChatPopupOpened} onClose={this.onClosePopup}>
+        <FormGroup className="new-chat-dialog">
+          <Input
+            type="text"
+            placeholder="Enter user name you want to write to"
+            onChange={this.onInputChange}
+            value={this.state.inputValue}
+          />
+          <Button onClick={this.onAddNewChatClick}>
+            Confirm
+          </Button>
+        </FormGroup>
+      </Dialog>
+    );
+  }
+
+  renderExit() {
+    return (
+      <Button onClick={this.onExitClick} variant="outlined" color="secondary" fullWidth>
+        Exit
+      </Button>
+    );
+  }
+
   render() {
     const {
       classes,
@@ -43,12 +121,18 @@ class Rooms extends React.Component {
     if (collection.length === 0) {
       return (
         <aside id="rooms">
+          {this.renderDialog()}
           <PeopleOutline className="noResults" />
+          <Button fullWidth variant="contained" color="primary" onClick={this.onOpenPopup}>
+            Add chat
+          </Button>
+          {this.renderExit()}
         </aside>
       );
     }
 
-    return (
+    return (<>
+      {this.renderDialog()}
       <aside id="rooms">
         <div className="items">
           <List component="nav" className={classes.List}>
@@ -66,8 +150,9 @@ class Rooms extends React.Component {
             ))}
           </List>
         </div>
+        {this.renderExit()}
       </aside>
-    );
+    </>);
   }
 }
 
