@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "Simple chatting messenger",
   "main": "index.js",
+  "homepage": "https://mini-messenger.kyzyl-ool.org",
+  "repository": "git@github.com:Kyzyl-ool/mm-frontend.git",
   "scripts": {
     "start": "webpack-dev-server",
     "clean": "rimraf dist",

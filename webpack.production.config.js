@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+require('babel-polyfill');
+
 const config = {
   stats: {
     maxModules: 0,
@@ -12,6 +14,7 @@ const config = {
   devtool: 'cheap-module-source-map',
 
   entry: [
+    'babel-polyfill',
     './main.js',
     './assets/scss/main.scss',
   ],
