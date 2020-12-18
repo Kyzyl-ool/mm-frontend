@@ -6,7 +6,7 @@ import CentrifugeSingleton from '../centrifuge';
 import route from '../../config/route';
 import httpOptions from '../../helper/httpOptions';
 
-const mockMessage = (text, user) => {
+export const mockMessage = (text, user) => {
   return {
     mocked: true,
     id: Math.random(),
@@ -29,6 +29,7 @@ export const sendMessage = () => {
   const state = store.getState();
   const { text } = state.message;
   const roomId = state.room.selected.id;
+  const { channel } = state.room.selected;
 
   if (text.trim().length === 0) {
     return;
@@ -36,9 +37,7 @@ export const sendMessage = () => {
 
   const mock = mockMessage(text, state.user.me);
 
-  const users = state.room.selected.users.map(user => user.id).sort();
-
-  CentrifugeSingleton.getInstance().publish(`messages_${users.join('-')}#${users.join(',')}`, 1)
+  CentrifugeSingleton.getInstance().publish(channel, text)
     .then(() => {
       insertMockToMessages(mock);
       updateMockedMessage(mock);

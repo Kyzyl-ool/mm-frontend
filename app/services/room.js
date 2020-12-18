@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import store from '../store';
 import { messageTextFlushAction } from '../store/actions/message';
-import { loadMessages } from './message/loader';
+import { insertMockToMessages, loadMessages } from './message/loader';
 import route from '../config/route';
 import httpOptions from '../helper/httpOptions';
 import {
@@ -10,6 +10,8 @@ import {
   roomSelectAction,
   roomOnlineUpdateAction,
 } from '../store/actions/room';
+import CentrifugeSingleton from './centrifuge';
+import { mockMessage } from './message/editor';
 
 const buildRooms = (collection) => {
   const items = [];
@@ -27,6 +29,10 @@ const buildRooms = (collection) => {
 };
 
 export const selectRoom = (room) => {
+  CentrifugeSingleton.getInstance().subscribe(room.channel, (message) => {
+    const mock = mockMessage(message.data, { id: message.info.user });
+    insertMockToMessages(mock);
+  });
   store.dispatch(roomSelectAction(room));
   store.dispatch(messageTextFlushAction());
 };
@@ -104,10 +110,10 @@ export const getChats = async () => {
   return axios.get(route.URL_CHAT, httpOptions);
 };
 
-export const createChat = async (name) => {
+export const createChat = async (name, participants) => {
   return axios.put(route.URL_CHAT, {
     title: `Chat with ${localStorage.getItem('name')} and ${name}`,
-    participants: [],
+    participants,
   }, httpOptions);
 };
 

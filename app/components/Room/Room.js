@@ -27,7 +27,7 @@ class Room extends React.Component {
     const { room } = this.props;
 
     return (
-      <ListItem button className="user" component={Link} to={`/room/${room.id}`}>
+      <ListItem button className="user" component={Link} to={`/chats/${room.id}`}>
         <Photo user={room.users[0]} />
         <div className="status">
           <MessageStatus message={room.lastMessage} />

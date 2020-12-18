@@ -11,10 +11,12 @@ import {
 import store from '../../store';
 
 import Room from './Room';
-import { createChat, getChats, loadRooms } from '../../services/room';
+import {
+  createChat, getChats, loadRooms, selectRoom,
+} from '../../services/room';
 import { getUsers } from '../../services/user';
 import { authorizeFailAction } from '../../store/actions/user';
-// import { loadMessages } from '../../service/message/loader';
+import { loadMessages } from '../../services/message/loader';
 
 const styles = ({
   List: {
@@ -37,10 +39,9 @@ class Rooms extends React.Component {
     loadRooms();
   }
 
-  // onRoomClick = (event, room) => {
-  onRoomClick = () => {
-    // selectRoom(room);
-    // loadMessages(room.id);
+  onRoomClick = (event, room) => {
+    selectRoom(room);
+    loadMessages(room.id);
     console.log('room click');
   };
 
@@ -132,7 +133,6 @@ class Rooms extends React.Component {
     }
 
     return (<>
-      {this.renderDialog()}
       <aside id="rooms">
         <div className="items">
           <List component="nav" className={classes.List}>
@@ -149,8 +149,12 @@ class Rooms extends React.Component {
               </ListItem>
             ))}
           </List>
+          {this.renderDialog()}
+          <Button fullWidth variant="contained" color="primary" onClick={this.onOpenPopup}>
+            Add chat
+          </Button>
+          {this.renderExit()}
         </div>
-        {this.renderExit()}
       </aside>
     </>);
   }
