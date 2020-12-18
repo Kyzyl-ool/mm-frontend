@@ -30,8 +30,10 @@ const buildRooms = (collection) => {
 
 export const selectRoom = (room) => {
   CentrifugeSingleton.getInstance().subscribe(room.channel, (message) => {
-    const mock = mockMessage(message.data, { id: message.info.user });
-    insertMockToMessages(mock);
+    if (+message.info.user !== +store.getState().user.me.id) {
+      const mock = mockMessage(message.data, { id: message.info.user });
+      insertMockToMessages(mock);
+    }
   });
   store.dispatch(roomSelectAction(room));
   store.dispatch(messageTextFlushAction());
