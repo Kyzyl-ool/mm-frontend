@@ -38,11 +38,23 @@ function Register() {
       </Typography>
       <br />
       <Typography>
-        This website is for demonstrating and testing of websocket connection in your bruwser.
+        This website is for demonstrating and testing websocket connection in your browser.
       </Typography>
       <br />
       <Typography>
         Enter your name and you will join for chatting among other participants.
+      </Typography>
+      <br />
+      <Typography>
+        After your registration you will be able to create new chat typing other user&lsquo;s name.
+        To enable websocket connection you have to press to the chat&lsquo;s item in the list on
+        the left side.
+      </Typography>
+      <br />
+      <Typography>
+        Pay attention to the fact that this application is in MVP stage so you may find errors and
+        report them to me:&nbsp;
+        <a href="mailto:kyzyl.okm@phystech.edu">kyzyl.okm@phystech.edu</a>
       </Typography>
       <br />
       <Typography>
