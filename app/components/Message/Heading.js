@@ -4,8 +4,6 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 
 import { withStyles } from '@material-ui/core/styles';
-import Search from '@material-ui/icons/Search';
-import Close from '@material-ui/icons/Close';
 
 import Tune from '@material-ui/icons/Tune';
 import Help from '@material-ui/icons/Help';
@@ -14,11 +12,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MoreVert from '@material-ui/icons/MoreVert';
-import Phone from '@material-ui/icons/Phone';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import IconButton from '@material-ui/core/IconButton/IconButton';
-
 import { calendarStringsHeader } from '../../helper/time';
 import route from '../../config/route';
 import PhotoSmall from '../User/PhotoSmall';
@@ -40,7 +34,6 @@ const styles = ({
 
 class Heading extends React.Component {
   state = {
-    search: '',
     anchorEl: null,
   };
 
@@ -73,23 +66,9 @@ class Heading extends React.Component {
     location.href = route.URL_HELP;
   };
 
-  clearSearch = () => {
-    this.setState({ search: '' });
-  };
-
-  onKeyUp = (event) => {
-    if (event.key === 'Escape') {
-      this.clearSearch();
-    }
-  };
-
-  changeSearch = (event) => {
-    this.setState({ search: event.target.value });
-  };
-
   render() {
     const { selected, classes } = this.props;
-    const { search, anchorEl } = this.state;
+    const { anchorEl } = this.state;
 
     if (!selected.name) {
       return '';

@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 import { connect } from 'react-redux';
 import PeopleOutline from '@material-ui/icons/PeopleOutline';
 import {
-  Button, Dialog, FormGroup, Input,
+  Button, Dialog, FormGroup, Input, Typography,
 } from '@material-ui/core';
 import store from '../../store';
 
@@ -33,6 +33,7 @@ class Rooms extends React.Component {
   state = {
     addChatPopupOpened: false,
     inputValue: '',
+    error: {},
   };
 
   componentDidMount() {
@@ -59,7 +60,7 @@ class Rooms extends React.Component {
       this.onClosePopup();
       loadRooms();
     } catch (e) {
-      throw Error('Adding new chat failed');
+      this.onError(new Error('User not found'));
     }
   };
 
@@ -81,6 +82,14 @@ class Rooms extends React.Component {
     store.dispatch(authorizeFailAction());
   };
 
+  onError = (error) => {
+    this.setState({
+      error: {
+        message: error.message,
+      },
+    });
+  };
+
   renderDialog() {
     return (
       <Dialog open={this.state.addChatPopupOpened} onClose={this.onClosePopup}>
@@ -94,6 +103,11 @@ class Rooms extends React.Component {
           <Button onClick={this.onAddNewChatClick}>
             Confirm
           </Button>
+          {this.state.error && (
+            <Typography color="error">
+              {this.state.error.message}
+            </Typography>
+          )}
         </FormGroup>
       </Dialog>
     );
