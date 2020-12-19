@@ -37,7 +37,9 @@ class Rooms extends React.Component {
   };
 
   componentDidMount() {
-    loadRooms();
+    setTimeout(() => {
+      loadRooms();
+    }, 400);
   }
 
   onRoomClick = (event, room) => {
@@ -53,6 +55,10 @@ class Rooms extends React.Component {
   };
 
   onAddNewChatClick = async () => {
+    if (this.state.inputValue.length === 0) {
+      this.onError(new Error('Enter other user\'s name'));
+      return;
+    }
     try {
       const { data } = await getUsers();
       const otherUser = data.find(({ email }) => email === this.state.inputValue);

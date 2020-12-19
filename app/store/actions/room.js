@@ -1,4 +1,5 @@
 import {
+  ROOM_CLEAR,
   ROOM_COLLECTION_LOAD_SUCCESS,
   ROOM_ONLINE_UPDATE,
   ROOM_SEARCH,
@@ -24,3 +25,8 @@ export const roomOnlineUpdateAction = collection => ({
   type: ROOM_ONLINE_UPDATE,
   payload: collection,
 });
+export const roomClear = () => {
+  return {
+    type: ROOM_CLEAR,
+  };
+};

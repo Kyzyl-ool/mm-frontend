@@ -8,7 +8,7 @@ import httpOptions from '../helper/httpOptions';
 import {
   roomCollectionLoadSuccessAction,
   roomSelectAction,
-  roomOnlineUpdateAction,
+  roomOnlineUpdateAction, roomClear,
 } from '../store/actions/room';
 import CentrifugeSingleton from './centrifuge';
 import { mockMessage } from './message/editor';
@@ -119,4 +119,6 @@ export const createChat = async (name, participants) => {
   }, httpOptions);
 };
 
-// export const joinChat = (chat)
+export const clearRoomsList = () => {
+  store.dispatch(roomClear());
+};

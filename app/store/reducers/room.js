@@ -40,6 +40,13 @@ const room = (state = initialState, action) => {
       selected: action.payload.selected,
     };
   }
+  if (action.type === 'ROOM_CLEAR') {
+    return {
+      collection: [],
+      search: '',
+      selected: {},
+    };
+  }
 
   return state;
 };
