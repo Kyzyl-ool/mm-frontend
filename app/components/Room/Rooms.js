@@ -12,7 +12,7 @@ import store from '../../store';
 
 import Room from './Room';
 import {
-  createChat, getChats, loadRooms, selectRoom,
+  createChat, loadRooms, selectRoom,
 } from '../../services/room';
 import { getUsers } from '../../services/user';
 import { authorizeFailAction } from '../../store/actions/user';
@@ -52,19 +52,14 @@ class Rooms extends React.Component {
   };
 
   onAddNewChatClick = async () => {
-    const { data: chats } = await getChats();
-    if (chats && chats.length > 0) {
-      console.log(chats);
-    } else {
-      try {
-        const { data } = await getUsers();
-        const otherUser = data.find(({ email }) => email === this.state.inputValue);
-        await createChat(this.state.inputValue, [otherUser.id]);
-        this.onClosePopup();
-        loadRooms();
-      } catch (e) {
-        throw Error('Adding new chat failed');
-      }
+    try {
+      const { data } = await getUsers();
+      const otherUser = data.find(({ email }) => email === this.state.inputValue);
+      await createChat(this.state.inputValue, [otherUser.id]);
+      this.onClosePopup();
+      loadRooms();
+    } catch (e) {
+      throw Error('Adding new chat failed');
     }
   };
 

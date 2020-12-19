@@ -109,43 +109,6 @@ class Heading extends React.Component {
           </p>
         </div>
 
-        <IconButton
-          id="phone"
-          className={classes.button}
-        >
-          <Phone />
-        </IconButton>
-
-        <div id="textSearch" className="search __dark">
-          <Search className="searchIcon" />
-          <input
-            className="searchInput"
-            type="text"
-            value={search}
-            onKeyUp={this.onKeyUp}
-            onChange={this.changeSearch}
-            placeholder="Search in messages"
-          />
-          {search.length > 0 ? (
-            <Close
-              className="clearIcon"
-              onClick={this.clearSearch}
-            />
-          ) : ('')}
-        </div>
-
-        <IconButton
-          id="profileInfo"
-          className={classes.button}
-          component="span"
-          aria-label="Delete"
-          aria-owns={anchorEl ? 'profileMenu' : undefined}
-          aria-haspopup="true"
-          onClick={this.showMenu}
-        >
-          <MoreVert />
-        </IconButton>
-
         <Menu
           id="profileMenu"
           anchorEl={anchorEl}
