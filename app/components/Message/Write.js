@@ -88,9 +88,6 @@ class Write extends React.Component {
               ) : null}
             </div>
           </ClickAwayListener>
-          <IconButton id="buttonUpload" color="default" className={classes.button} component="span" disabled>
-            <AttachFile />
-          </IconButton>
           <IconButton
             id="buttonSend"
             color="default"
